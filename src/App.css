@@ -1,0 +1,54 @@
+.container-centrat {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    /* Un strat negru transparent peste fundal ca să se vadă textul mai bine */
+}
+
+.titlu {
+    color: white;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    font-size: 3rem;
+}
+
+.grup-butoane {
+    display: flex;
+    flex-direction: column;
+    /* Pune butoanele unul sub altul */
+    gap: 15px;
+    /* Spațiu între butoane */
+}
+
+.buton-transparent {
+    padding: 12px 40px;
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+    /* Scoate sublinirea de link */
+    border: 2px solid white;
+    background-color: transparent;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+
+/* Efect când treci cu mouse-ul peste buton */
+
+.buton-transparent:hover {
+    background-color: white;
+    color: black;
+}
+
+.pagina-goala {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+}

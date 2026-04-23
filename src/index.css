@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Damion&display=swap');
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('./fundal.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* Aici am schimbat fontul */
+    font-family: "Damion", cursive;
+    /*font-weight: 800;
+    font-style: normal;*/
+}
+
+html,
+body,
+#root {
+    height: 100%;
+}

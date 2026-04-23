@@ -1,0 +1,59 @@
+.pagina-fundal-completa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.dreptunghi-login {
+    background-color: #b6003a;
+    padding: 50px;
+    border-radius: 25px;
+    width: 400px;
+    /* Poți ajusta lățimea cum dorești */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.titlu-stanga-sus {
+    color: white;
+    font-family: 'Damion', cursive;
+    font-size: 2.2rem;
+    margin-top: 0;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.formular-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.grup-input {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.grup-input label {
+    color: white;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.grup-input input {
+    background-color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-family: 'Damion', cursive;
+}
+
+.dreptunghi-login .buton-transparent {
+    width: 200px;
+    align-self: center;
+    margin-top: 10px;
+    font-family: 'Damion', cursive;
+}

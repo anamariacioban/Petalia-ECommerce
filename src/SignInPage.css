@@ -1,0 +1,62 @@
+.pagina-fundal-completa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.dreptunghi-signin {
+    background-color: #b6003a;
+    padding: 30px;
+    border-radius: 25px;
+    width: 600px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.titlu-stanga-sus {
+    color: white;
+    font-family: 'Damion', cursive;
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.formular-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.grup-input {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.grup-input label {
+    color: white;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.grup-input input,
+.grup-input select,
+.grup-input textarea {
+    background-color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    font-family: "Damion", cursive;
+}
+
+.dreptunghi-signin .buton-transparent {
+    width: 200px;
+    /* Poți pune 200px, 300px etc. */
+    align-self: center;
+    /* Îl centrează în interiorul formularului flex */
+    margin-top: 20px;
+    font-family: "Damion", cursive;
+}
