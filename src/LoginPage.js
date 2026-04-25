@@ -23,6 +23,7 @@ function LoginPage() {
       if (response.ok) {
         if (data.rol === 'Client') {
           localStorage.setItem('numeUtilizator',data.nume);
+          localStorage.setItem('idUser',data.idUser);
           navigate('/client-home'); // Redirecționăm către noua pagină
         } else {
           alert("Bine ai revenit, Administrator!");

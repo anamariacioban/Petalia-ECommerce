@@ -1,0 +1,107 @@
+.favorites-page-wrapper {
+    background: url('./fundal.jpg') no-repeat center center fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.favorites-card {
+    background-color: #b6003a;
+    width: 90%;
+    max-width: 100vw;
+    min-width: 250px;
+    height: 80vh;
+    border-radius: 40px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+}
+
+.favorites-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.back-arrow {
+    color: white;
+    width: 2.5rem;
+    height: 2.5rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.back-arrow:hover {
+    transform: translateX(-5px);
+}
+
+.favorites-title {
+    color: white;
+    font-size: 2.2rem;
+    /* Se scalează bine pe majoritatea ecranelor */
+    font-weight: 800;
+    margin: 0;
+}
+
+.favorites-scroll-area {
+    flex: 1;
+    overflow-y: auto;
+    /* Permite scroll în interiorul dreptunghiului roz */
+    padding-right: 10px;
+}
+
+
+/* Stil pentru fiecare rând de floare */
+
+.favorite-row {
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 1rem;
+    padding: 1.2rem;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s;
+}
+
+.favorite-row:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.flower-name {
+    display: block;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.flower-details {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.favorite-price {
+    color: #ffeb3b;
+    /* Galben pentru preț ca să iasă în evidență */
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+
+/* Personalizare scrollbar */
+
+.favorites-scroll-area::-webkit-scrollbar {
+    width: 6px;
+}
+
+.favorites-scroll-area::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}

@@ -5,6 +5,7 @@ import './App.css';
 import SignInPage from './SignInPage';
 import LoginPage from './LoginPage';
 import ClientHomePage from './ClientHomePage';
+import FavoritesPage from './FavoritesPage';
 
 // Componenta pentru Pagina Principală
 function Home() {
@@ -27,6 +28,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signin" element={<SignInPage />} />
         <Route path="/client-home" element={<ClientHomePage />} />
+        <Route path="/favorites" element={<FavoritesPage />} />
       </Routes>
     </Router>
   );

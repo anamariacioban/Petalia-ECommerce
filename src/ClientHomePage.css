@@ -55,7 +55,7 @@
     align-items: center;
     padding: 10px 20px;
     width: 90%;
-    max-width: 1000px;
+    max-width: 2000px;
     min-width: 250px;
 }
 
@@ -191,7 +191,7 @@
     border: none;
     color: white;
     font-size: 1.2rem;
-    font-family: inherit;
+    font-family: 'Damion', cursive;
     cursor: pointer;
     padding: 5px 0;
     transition: transform 0.3s ease, font-weight 0.3s ease;
@@ -239,4 +239,71 @@
     padding: 20px 40px;
     width: 100%;
     box-sizing: border-box;
+}
+
+.profile-sidebar {
+    background-color: #b6003a;
+    width: 350px;
+}
+
+.profile-title {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input-group label {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    margin-left: 5px;
+}
+
+.input-group input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 12px;
+    color: white;
+    outline: none;
+    transition: border 0.3s;
+    font-family: 'Damion', cursive;
+    font-size: 1rem;
+}
+
+.input-group input:focus {
+    border-color: white;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-save {
+    margin-top: 20px;
+    background-color: white;
+    color: #880e4f;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Damion', cursive;
+    font-size: 1.2rem;
+}
+
+.btn-save:hover {
+    background-color: white;
+    transform: translateY(-2px);
 }
