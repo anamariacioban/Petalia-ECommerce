@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './LoginPage.css';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [parola, setParola] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -16,8 +18,13 @@ function LoginPage() {
 
       const data = await response.json();
       if (response.ok) {
-        alert(data.message);
-        // Aici vei putea redirecționa utilizatorul către pagina de magazin
+        if (data.rol === 'Client') {
+          navigate('/client-home'); // Redirecționăm către noua pagină
+        } else {
+          alert("Bine ai revenit, Administrator!");
+          // Aici vei putea adăuga navigarea pentru admin mai târziu
+        }
+        //alert(data.message);
       } else {
         alert(data.error);
       }

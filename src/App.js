@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import SignInPage from './SignInPage';
 import LoginPage from './LoginPage';
+import ClientHomePage from './ClientHomePage';
 
 // Componenta pentru Pagina Principală
 function Home() {
@@ -25,6 +26,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signin" element={<SignInPage />} />
+        <Route path="/client-home" element={<ClientHomePage />} />
       </Routes>
     </Router>
   );
