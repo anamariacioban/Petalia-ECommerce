@@ -19,6 +19,7 @@ function LoginPage() {
       const data = await response.json();
       if (response.ok) {
         if (data.rol === 'Client') {
+          localStorage.setItem('numeUtilizator',data.nume);
           navigate('/client-home'); // Redirecționăm către noua pagină
         } else {
           alert("Bine ai revenit, Administrator!");

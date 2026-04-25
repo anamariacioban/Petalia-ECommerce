@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { Menu, Heart, ShoppingCart, Search } from 'lucide-react';
 import './ClientHomePage.css';
 
@@ -8,16 +8,50 @@ import ImagineAranjamente from './aranjament.png';
 import ImagineGhivece from './ghiveci.png';
 
 function ClientHomePage() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [numeUtilizator, setNumeUtilizator] = useState("Utilizator"); // Aici poți lua numele din login
+    useEffect(() => {
+        // Citim numele salvat la pasul 1
+        const numeSalvat = localStorage.getItem('numeUtilizator');
+        
+        // Dacă am găsit un nume în memorie, actualizăm state-ul
+        if (numeSalvat) {
+          setNumeUtilizator(numeSalvat);
+        }
+      }, []);
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
   return (
-    <div className="pagina-fundal-completa">
+    <div className="pagina-container">
+      {/* 1. Meniul Lateral (Sidebar) */}
+      <div className={`sidebar ${isMenuOpen ? 'open' : ''}`}>
+      <div className="sidebar-header">
+          <Menu className="icon-alb" size={32} onClick={toggleMenu} style={{ cursor: 'pointer' }} />
+          <span className="nume-utilizator">{numeUtilizator}</span>
+        </div>
+        
+        <nav className="sidebar-nav">
+          <button className="menu-item">Profil</button>
+          <button className="menu-item">Preferate</button>
+          <button className="menu-item">Puncte de fidelitate</button>
+          <button className="menu-item">Comenzi</button>
+          <button className="menu-item deconectare">Deconectare</button>
+        </nav>
+      </div>
+
+      {/*pagina efectiva*/}
+      <div className={`continut-pagina ${isMenuOpen ? 'blur-activ' : ''}`}>
       {/* Header cu Iconițe */}
       <div className="header-client">
-        <Menu className="icon-alb" size={32} />
-        <div className="header-dreapta">
-          <Heart className="icon-alb" size={32} />
-          <ShoppingCart className="icon-alb" size={32} />
+          {/* Iconița principală - i-am dat color="white" și un z-index prin style dacă e nevoie */}
+          <Menu color="white" size={34} onClick={toggleMenu} style={{ cursor: 'pointer', zIndex: 100 }} />
+          
+          <div className="header-dreapta" style={{ display: 'flex', gap: '20px' }}>
+            <Heart color="white" size={32} style={{ cursor: 'pointer' }} />
+            <ShoppingCart color="white" size={32} style={{ cursor: 'pointer' }} />
+          </div>
         </div>
-      </div>
 
       {/* Bara de Căutare */}
       <div className="container-search">
@@ -45,7 +79,9 @@ function ClientHomePage() {
           <img src={ImagineGhivece} alt="Ghivece" />
           <span>Ghivece</span>
         </div>
-      </div>
+        </div>
+        </div>
+        {isMenuOpen && <div className="overlay-click" onClick={toggleMenu}></div>}
     </div>
   );
 }
