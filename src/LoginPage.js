@@ -17,6 +17,9 @@ function LoginPage() {
       });
 
       const data = await response.json();
+
+      console.log("Datele primite de la backend sunt:", data);
+      
       if (response.ok) {
         if (data.rol === 'Client') {
           localStorage.setItem('numeUtilizator',data.nume);

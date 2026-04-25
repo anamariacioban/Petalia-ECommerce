@@ -62,7 +62,11 @@ app.MapPost("/api/login", async (LoginRequest request) =>
     {
         var nume = reader.GetString(0);
         var rol = reader.GetString(1);
-        return Results.Ok(new { message = $"Bine ai revenit, {nume}!", rol = rol });
+        return Results.Ok(new { 
+            message = $"Bine ai revenit, {nume}!", 
+            rol = rol, 
+            nume = nume // Aceasta este linia esențială care lipsea!
+        });
     }
     else
     {

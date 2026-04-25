@@ -22,6 +22,15 @@ function ClientHomePage() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+  const handleDeconectare = () => {
+    // 1. Ștergem datele din memoria browserului
+    localStorage.removeItem('numeUtilizator');
+    // Aici mai poți adăuga și ștergerea token-ului dacă folosești așa ceva
+    // localStorage.removeItem('token');
+
+    // 2. Trimitem utilizatorul înapoi la pagina de SignIn
+    window.location.href = '/login'; 
+  };
   return (
     <div className="pagina-container">
       {/* 1. Meniul Lateral (Sidebar) */}
@@ -37,6 +46,11 @@ function ClientHomePage() {
           <button className="menu-item">Puncte de fidelitate</button>
           <button className="menu-item">Comenzi</button>
           <button className="menu-item deconectare">Deconectare</button>
+        
+          <button className="menu-item deconectare" onClick={handleDeconectare}>
+            Deconectare
+          </button>
+
         </nav>
       </div>
 
