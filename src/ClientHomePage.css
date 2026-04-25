@@ -1,11 +1,23 @@
-/* ClientHomePage.css */
+.pagina-fundal-completa {
+    display: flex;
+    flex-direction: column;
+    /* Elementele stau unul sub altul */
+    align-items: center;
+    /* Centrează totul pe orizontală */
+    justify-content: flex-start;
+    /* Începe de sus, nu din mijloc */
+    height: 100vh;
+    width: 100%;
+    overflow-y: auto;
+    /* Permite scroll dacă e cazul */
+}
 
 .header-client {
     display: flex;
     justify-content: space-between;
     padding: 20px 40px;
-    position: absolute;
-    top: 0;
+    /*position: absolute;
+    top: 0;*/
     width: 100%;
     box-sizing: border-box;
 }
@@ -29,7 +41,8 @@
 /* Bara de căutare centrată */
 
 .container-search {
-    margin-top: 100px;
+    margin-top: 20px;
+    margin-bottom: 40px;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -41,8 +54,9 @@
     display: flex;
     align-items: center;
     padding: 10px 20px;
-    width: 50%;
-    max-width: 600px;
+    width: 90%;
+    max-width: 1000px;
+    min-width: 250px;
 }
 
 .bara-cautare input {
@@ -68,21 +82,26 @@
 .grid-categorii {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    margin: 50px auto;
-    width: 70%;
-    max-width: 800px;
+    gap: 4vw;
+    /*margin: 50px auto;*/
+    width: 80%;
+    max-width: 900px;
+    margin: 0 auto 50px auto;
+    margin-bottom: 50px;
 }
 
 .categorie-card {
     background-color: #b6003a;
     border-radius: 20px;
-    padding: 20px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    /*gap: 15px;
     cursor: pointer;
+    transition: transform 0.3s ease;*/
+    justify-content: center;
+    aspect-ratio: 1/1;
     transition: transform 0.3s ease;
 }
 
@@ -92,15 +111,16 @@
 
 .categorie-card img {
     width: 100px;
-    height: 100px;
-    object-fit: cover;
+    height: auto;
+    object-fit: contain;
     border-radius: 15px;
-    background-color: white;
+    /*background-color: white;*/
     /* Fundal alb sub imagine dacă e transparentă */
 }
 
 .categorie-card span {
     color: white;
     font-family: 'Damion', cursive;
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    text-align: center;
 }
