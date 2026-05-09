@@ -22,6 +22,7 @@ function LoginPage() {
         localStorage.setItem('numeUtilizator', data.nume);
         localStorage.setItem('idUser', data.idUser);
         localStorage.setItem('rol', data.rol);
+        localStorage.setItem('emailUser', email);
 
         navigate('/client-home');
 
