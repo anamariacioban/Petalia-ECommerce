@@ -70,7 +70,6 @@ function SignInPage() {
             <label>Rol utilizator</label>
             <select name="rol" onChange={handleChange}>
               <option value="Client">Client</option>
-              <option value="Administrator">Administrator</option>
             </select>
           </div>
 

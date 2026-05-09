@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetaliaBackend", "PetaliaBackend\PetaliaBackend.csproj", "{580C583C-DBED-32FA-6E49-CBF232935477}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{580C583C-DBED-32FA-6E49-CBF232935477}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{580C583C-DBED-32FA-6E49-CBF232935477}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{580C583C-DBED-32FA-6E49-CBF232935477}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{580C583C-DBED-32FA-6E49-CBF232935477}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {45CFB383-1F6C-4F06-A3F8-4927B8CF3558}
+	EndGlobalSection
+EndGlobal

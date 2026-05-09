@@ -16,34 +16,30 @@ function ClientHomePage() {
       nume: '', email: '', parola: '', adresa: '', telefon: ''
     }); 
     const idUser = localStorage.getItem('idUser');
-    const [numeUtilizator, setNumeUtilizator] = useState("Utilizator");// Aici poți lua numele din login
+    const rol = localStorage.getItem('rol');
+    const [numeUtilizator, setNumeUtilizator] = useState("Utilizator");
     
     useEffect(() => {
-        // Citim numele salvat la pasul 1
         const numeSalvat = localStorage.getItem('numeUtilizator');
-        
-        // Dacă am găsit un nume în memorie, actualizăm state-ul
         if (numeSalvat) {
           setNumeUtilizator(numeSalvat);
         }
       }, []);
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  const handleDeconectare = () => {
-    // 1. Ștergem datele din memoria browserului
-    localStorage.removeItem('numeUtilizator');
-    // Aici mai poți adăuga și ștergerea token-ului dacă folosești așa ceva
-    // localStorage.removeItem('token');
 
-    // 2. Trimitem utilizatorul înapoi la pagina de Login
+  const handleDeconectare = () => {
+    localStorage.removeItem('numeUtilizator');
+    localStorage.removeItem('idUser');
+    localStorage.removeItem('rol');
     window.location.href = '/login'; 
   };
-  // Funcție pentru a deschide profilul și a încărca datele
+
   const openProfile = async () => {
-    setIsMenuOpen(false); // Închidem meniul principal
+    setIsMenuOpen(false);
     setIsProfileOpen(true);
-    console.log("ID Utilizator din memorie este:", idUser);
     try {
       const response = await fetch(`http://localhost:5000/api/user-details/${idUser}`);
       if (response.ok) {
@@ -61,7 +57,6 @@ function ClientHomePage() {
     }
   };
 
-  // Funcție pentru a salva datele
   const handleSaveProfile = async () => {
     const response = await fetch(`http://localhost:5000/api/user-update/${idUser}`, {
       method: 'PUT',
@@ -77,7 +72,7 @@ function ClientHomePage() {
 
     if (response.ok) {
       alert("Modificările au fost salvate!");
-      localStorage.setItem('numeUtilizator', userData.nume); // Update nume în meniu
+      localStorage.setItem('numeUtilizator', userData.nume);
       setIsProfileOpen(false);
     }
     localStorage.setItem('numeUtilizator', userData.nume);
@@ -87,7 +82,7 @@ function ClientHomePage() {
     <div className="pagina-container">
       {/* 1. Meniul Lateral (Sidebar) */}
       <div className={`sidebar ${isMenuOpen ? 'open' : ''}`}>
-      <div className="sidebar-header">
+        <div className="sidebar-header">
           <Menu className="icon-alb" size={32} onClick={toggleMenu} style={{ cursor: 'pointer' }} />
           <span className="nume-utilizator">{numeUtilizator}</span>
         </div>
@@ -97,13 +92,19 @@ function ClientHomePage() {
           <button className="menu-item" onClick={()=>navigate('/favorites')}>Preferate</button>
           <button className="menu-item">Puncte de fidelitate</button>
           <button className="menu-item">Comenzi</button>
+
+          {rol === 'Administrator' && (
+            <button className="menu-item" onClick={() => navigate('/admin')}>
+              Administrare
+            </button>
+          )}
         
           <button className="menu-item deconectare" onClick={handleDeconectare}>
             Deconectare
           </button>
-
         </nav>
       </div>
+
       {/* 2. SIDEBAR PROFIL */}
       <div className={`sidebar profile-sidebar ${isProfileOpen ? 'open' : ''}`}>
         <div className="sidebar-header">
@@ -138,10 +139,9 @@ function ClientHomePage() {
       </div>
 
       {/*pagina efectiva*/}
-      <div className={`continut-pagina ${(isMenuOpen ||isProfileOpen) ? 'blur-activ' : ''}`}>
-      {/* Header cu Iconițe */}
-      <div className="header-client">
-          {/* Iconița principală - i-am dat color="white" și un z-index prin style dacă e nevoie */}
+      <div className={`continut-pagina ${(isMenuOpen || isProfileOpen) ? 'blur-activ' : ''}`}>
+        {/* Header cu Iconițe */}
+        <div className="header-client">
           <Menu color="white" size={34} onClick={toggleMenu} style={{ cursor: 'pointer', zIndex: 100 }} />
           
           <div className="header-dreapta" style={{ display: 'flex', gap: '20px' }}>
@@ -150,35 +150,35 @@ function ClientHomePage() {
           </div>
         </div>
 
-      {/* Bara de Căutare */}
-      <div className="container-search">
-        <div className="bara-cautare">
-          <Search className="icon-search" size={20} />
-          <input type="text" placeholder="Caută flori..." />
+        {/* Bara de Căutare */}
+        <div className="container-search">
+          <div className="bara-cautare">
+            <Search className="icon-search" size={20} />
+            <input type="text" placeholder="Caută flori..." />
+          </div>
         </div>
-      </div>
 
-      {/* Grid Categorii */}
-      <div className="grid-categorii">
-        <div className="categorie-card">
-          <img src={ImagineFlori} alt="Flori" />
-          <span>Flori</span>
-        </div>
-        <div className="categorie-card">
-          <img src={ImagineBuchete} alt="Buchete" />
-          <span>Buchete</span>
-        </div>
-        <div className="categorie-card">
-          <img src={ImagineAranjamente} alt="Aranjamente" />
-          <span>Aranjamente florale</span>
-        </div>
-        <div className="categorie-card">
-          <img src={ImagineGhivece} alt="Ghivece" />
-          <span>Ghivece</span>
-        </div>
-        </div>
-        </div>
-        {isMenuOpen && <div className="overlay-click" onClick={toggleMenu}></div>}
+        {/* Grid Categorii */}
+        <div className="grid-categorii">
+  <div className="categorie-card" onClick={() => navigate('/categorie/Flori')} style={{cursor:'pointer'}}>
+    <img src={ImagineFlori} alt="Flori" />
+    <span>Flori</span>
+  </div>
+  <div className="categorie-card" onClick={() => navigate('/categorie/Buchete')} style={{cursor:'pointer'}}>
+    <img src={ImagineBuchete} alt="Buchete" />
+    <span>Buchete</span>
+  </div>
+  <div className="categorie-card" onClick={() => navigate('/categorie/Aranjamente Florale')} style={{cursor:'pointer'}}>
+    <img src={ImagineAranjamente} alt="Aranjamente" />
+    <span>Aranjamente florale</span>
+  </div>
+  <div className="categorie-card" onClick={() => navigate('/categorie/Ghivece')} style={{cursor:'pointer'}}>
+    <img src={ImagineGhivece} alt="Ghivece" />
+    <span>Ghivece</span>
+  </div>
+</div>
+      </div>
+      {isMenuOpen && <div className="overlay-click" onClick={toggleMenu}></div>}
     </div>
   );
 }

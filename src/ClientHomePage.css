@@ -1,23 +1,17 @@
 .pagina-fundal-completa {
     display: flex;
     flex-direction: column;
-    /* Elementele stau unul sub altul */
     align-items: center;
-    /* Centrează totul pe orizontală */
     justify-content: flex-start;
-    /* Începe de sus, nu din mijloc */
     height: 100vh;
     width: 100%;
     overflow-y: auto;
-    /* Permite scroll dacă e cazul */
 }
 
 .header-client {
     display: flex;
     justify-content: space-between;
     padding: 20px 40px;
-    /*position: absolute;
-    top: 0;*/
     width: 100%;
     box-sizing: border-box;
 }
@@ -36,7 +30,6 @@
 .icon-alb:hover {
     transform: scale(1.1);
 }
-
 
 /* Bara de căutare centrată */
 
@@ -66,6 +59,7 @@
     margin-left: 10px;
     width: 100%;
     font-size: 1rem;
+    font-family: 'Georgia', serif;
 }
 
 .bara-cautare input::placeholder {
@@ -76,14 +70,12 @@
     color: white;
 }
 
-
 /* Grid-ul de 2x2 */
 
 .grid-categorii {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 4vw;
-    /*margin: 50px auto;*/
     width: 80%;
     max-width: 900px;
     margin: 0 auto 50px auto;
@@ -97,9 +89,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /*gap: 15px;
-    cursor: pointer;
-    transition: transform 0.3s ease;*/
     justify-content: center;
     aspect-ratio: 1/1;
     transition: transform 0.3s ease;
@@ -114,19 +103,17 @@
     height: auto;
     object-fit: contain;
     border-radius: 15px;
-    /*background-color: white;*/
-    /* Fundal alb sub imagine dacă e transparentă */
 }
 
 .categorie-card span {
     color: white;
-    font-family: 'Damion', cursive;
+    font-family: 'Georgia', serif;
     font-size: clamp(1.2rem, 3vw, 1.8rem);
     text-align: center;
+    font-style: italic;
 }
 
-
-/* Containerul principal pentru a gestiona sidebar-ul și conținutul */
+/* Containerul principal */
 
 .pagina-container {
     position: relative;
@@ -135,14 +122,12 @@
     width: 100%;
 }
 
-
 /* Stilul pentru Sidebar */
 
 .sidebar {
     position: fixed;
     top: 0;
     left: 0;
-    /* Ascuns în afara ecranului la stânga */
     width: 320px;
     height: 100vh;
     background-color: #b6003a;
@@ -157,11 +142,9 @@
 
 .sidebar.open {
     transform: translateX(0);
-    /* Apare pe ecran */
 }
 
-
-/* Header-ul din Sidebar (Iconița și Numele) */
+/* Header-ul din Sidebar */
 
 .sidebar-header {
     display: flex;
@@ -172,10 +155,10 @@
 
 .nume-utilizator {
     color: white;
-    font-family: 'Damion', cursive;
+    font-family: 'Georgia', serif;
     font-size: 1.5rem;
+    font-style: italic;
 }
-
 
 /* Navigarea din interiorul Sidebar */
 
@@ -191,29 +174,23 @@
     border: none;
     color: white;
     font-size: 1.2rem;
-    font-family: 'Damion', cursive;
+    font-family: 'Georgia', serif;
+    font-style: italic;
     cursor: pointer;
     padding: 5px 0;
     transition: transform 0.3s ease, font-weight 0.3s ease;
     text-align: left;
 }
 
-
-/* Animația la hover pe butoane */
-
 .menu-item:hover {
     transform: scale(1.15);
-    /* Se mărește */
     font-weight: bold;
-    /* Se îngroașă */
 }
-
 
 /* Stilul pentru conținutul paginii */
 
 .continut-pagina {
     transition: filter 0.4s ease;
-    /* Animația de blur */
     min-height: 100vh;
     width: 100%;
     display: flex;
@@ -221,24 +198,9 @@
     align-items: center;
 }
 
-
-/* Clasa care blurează restul site-ului */
-
 .blur-activ {
     filter: blur(8px);
     pointer-events: none;
-    /* Previne click-urile pe restul paginii când meniul e deschis */
-}
-
-
-/* Ajustare pentru a păstra elementele centrate */
-
-.header-client {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 40px;
-    width: 100%;
-    box-sizing: border-box;
 }
 
 .profile-sidebar {
@@ -250,6 +212,8 @@
     color: white;
     font-size: 1.5rem;
     font-weight: bold;
+    font-family: 'Georgia', serif;
+    font-style: italic;
     margin: 0;
 }
 
@@ -270,6 +234,7 @@
     color: rgba(255, 255, 255, 0.8);
     font-size: 0.9rem;
     margin-left: 5px;
+    font-family: 'Georgia', serif;
 }
 
 .input-group input {
@@ -280,7 +245,7 @@
     color: white;
     outline: none;
     transition: border 0.3s;
-    font-family: 'Damion', cursive;
+    font-family: 'Georgia', serif;
     font-size: 1rem;
 }
 
@@ -299,8 +264,9 @@
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s;
-    font-family: 'Damion', cursive;
+    font-family: 'Georgia', serif;
     font-size: 1.2rem;
+    font-style: italic;
 }
 
 .btn-save:hover {

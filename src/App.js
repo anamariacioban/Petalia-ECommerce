@@ -1,4 +1,3 @@
-/*import logo from './logo.svg';*/
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
@@ -6,8 +5,10 @@ import SignInPage from './SignInPage';
 import LoginPage from './LoginPage';
 import ClientHomePage from './ClientHomePage';
 import FavoritesPage from './FavoritesPage';
+import AdminPage from './AdminPage';
+import CategoryPage from './CategoryPage';
+import ProdusInLucru from './ProdusInLucru';
 
-// Componenta pentru Pagina Principală
 function Home() {
   return (
     <div className="container-centrat">
@@ -29,6 +30,9 @@ function App() {
         <Route path="/signin" element={<SignInPage />} />
         <Route path="/client-home" element={<ClientHomePage />} />
         <Route path="/favorites" element={<FavoritesPage />} />
+        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/categorie/:categorie" element={<CategoryPage />} />
+        <Route path="/produs-in-lucru" element={<ProdusInLucru />} />
       </Routes>
     </Router>
   );

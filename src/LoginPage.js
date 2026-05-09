@@ -18,18 +18,13 @@ function LoginPage() {
 
       const data = await response.json();
 
-      console.log("Datele primite de la backend sunt:", data);
-      
       if (response.ok) {
-        if (data.rol === 'Client') {
-          localStorage.setItem('numeUtilizator',data.nume);
-          localStorage.setItem('idUser',data.idUser);
-          navigate('/client-home'); // Redirecționăm către noua pagină
-        } else {
-          alert("Bine ai revenit, Administrator!");
-          // Aici vei putea adăuga navigarea pentru admin mai târziu
-        }
-        //alert(data.message);
+        localStorage.setItem('numeUtilizator', data.nume);
+        localStorage.setItem('idUser', data.idUser);
+        localStorage.setItem('rol', data.rol);
+
+        navigate('/client-home');
+
       } else {
         alert(data.error);
       }
