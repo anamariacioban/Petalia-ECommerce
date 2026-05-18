@@ -168,7 +168,6 @@ function ClientHomePage() {
           <X color="white" size={30} onClick={() => setIsProfileOpen(false)} style={{cursor:'pointer', marginLeft: 'auto'}} />
         </div>
         <div className="profile-form">
-<<<<<<< HEAD
           <div className="input-group">
             <label>Nume <span className="obligatoriu-profil">*</span></label>
             <input type="text" value={userData.nume} onChange={(e) => { setUserData({...userData, nume: e.target.value}); setProfileErrors({...profileErrors, nume: ''}); }} />
@@ -201,13 +200,6 @@ function ClientHomePage() {
             {profileErrors.telefon && <span className="eroare-profil">{profileErrors.telefon}</span>}
           </div>
           <p className="legenda-profil"><span className="obligatoriu-profil">*</span> câmpuri obligatorii</p>
-=======
-          <div className="input-group"><label>Nume</label><input type="text" value={userData.nume} onChange={(e) => setUserData({...userData, nume: e.target.value})} /></div>
-          <div className="input-group"><label>Email</label><input type="email" value={userData.email} onChange={(e) => setUserData({...userData, email: e.target.value})} /></div>
-          <div className="input-group"><label>Parola</label><input type="password" value={userData.parola} onChange={(e) => setUserData({...userData, parola: e.target.value})} /></div>
-          <div className="input-group"><label>Adresa</label><input type="text" value={userData.adresa} onChange={(e) => setUserData({...userData, adresa: e.target.value})} /></div>
-          <div className="input-group"><label>Telefon</label><input type="text" value={userData.telefon} onChange={(e) => setUserData({...userData, telefon: e.target.value})} /></div>
->>>>>>> origin/develop
           <button className="btn-save" onClick={handleSaveProfile}>Salveaza modificari</button>
         </div>
       </div>
