@@ -251,6 +251,162 @@ app.MapGet("/api/flori/categorie/{categorie}", async (string categorie) => {
     return Results.Ok(flori);
 });
 
+// Adauga la favorite
+app.MapPost("/api/favorite", async (FavoriteRequest request) => {
+    using var connection = new SqliteConnection(connectionString);
+    await connection.OpenAsync();
+    var command = connection.CreateCommand();
+    command.CommandText = @"
+        INSERT OR IGNORE INTO Favorite (id_user, id_floare)
+        VALUES ($userId, $flowareId)";
+    command.Parameters.AddWithValue("$userId", request.UserId);
+    command.Parameters.AddWithValue("$flowareId", request.FlowareId);
+    try {
+        await command.ExecuteNonQueryAsync();
+        return Results.Ok(new { message = "Adăugat la favorite!" });
+    } catch (Exception ex) {
+        return Results.BadRequest(new { error = ex.Message });
+    }
+});
+
+// Sterge din favorite
+app.MapDelete("/api/favorite/{userId}/{flowareId}", async (int userId, int flowareId) => {
+    using var connection = new SqliteConnection(connectionString);
+    await connection.OpenAsync();
+    var command = connection.CreateCommand();
+    command.CommandText = "DELETE FROM Favorite WHERE id_user = $userId AND id_floare = $flowareId";
+    command.Parameters.AddWithValue("$userId", userId);
+    command.Parameters.AddWithValue("$flowareId", flowareId);
+    await command.ExecuteNonQueryAsync();
+    return Results.Ok(new { message = "Șters din favorite!" });
+});
+
+// Verifica daca un produs e la favorite
+app.MapGet("/api/favorite/check/{userId}/{flowareId}", async (int userId, int flowareId) => {
+    using var connection = new SqliteConnection(connectionString);
+    await connection.OpenAsync();
+    var command = connection.CreateCommand();
+    command.CommandText = "SELECT COUNT(*) FROM Favorite WHERE id_user = $userId AND id_floare = $flowareId";
+    command.Parameters.AddWithValue("$userId", userId);
+    command.Parameters.AddWithValue("$flowareId", flowareId);
+    var count = (long)(await command.ExecuteScalarAsync())!;
+    return Results.Ok(new { isFavorit = count > 0 });
+});
+
+// COMENZI - Creaza o comanda noua
+app.MapPost("/api/comenzi", async (ComandaRequest request) => {
+    using var connection = new SqliteConnection(connectionString);
+    await connection.OpenAsync();
+    using var transaction = connection.BeginTransaction();
+    try {
+        // Insereaza comanda
+        var cmdComanda = connection.CreateCommand();
+        cmdComanda.Transaction = transaction;
+        cmdComanda.CommandText = @"
+            INSERT INTO Comenzi (id_user, data_comanda, status, total)
+            VALUES ($idUser, $data, 'In procesare', $total);
+            SELECT last_insert_rowid();";
+        cmdComanda.Parameters.AddWithValue("$idUser", request.IdUser);
+        cmdComanda.Parameters.AddWithValue("$data", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+        cmdComanda.Parameters.AddWithValue("$total", request.Total);
+        var idComanda = (long)(await cmdComanda.ExecuteScalarAsync())!;
+
+        // Insereaza detaliile
+        foreach (var produs in request.Produse) {
+            var cmdDetaliu = connection.CreateCommand();
+            cmdDetaliu.Transaction = transaction;
+            cmdDetaliu.CommandText = @"
+                INSERT INTO Detalii_Comanda (id_comanda, id_floare, cantitate, pret_unitar)
+                VALUES ($idComanda, $idFloare, $cantitate, $pretUnitar)";
+            cmdDetaliu.Parameters.AddWithValue("$idComanda", idComanda);
+            cmdDetaliu.Parameters.AddWithValue("$idFloare", produs.IdFloare);
+            cmdDetaliu.Parameters.AddWithValue("$cantitate", produs.Cantitate);
+            cmdDetaliu.Parameters.AddWithValue("$pretUnitar", produs.PretUnitar);
+            await cmdDetaliu.ExecuteNonQueryAsync();
+        }
+
+        // Insereaza plata
+        if (!string.IsNullOrEmpty(request.MetodaPlata)) {
+            var cmdPlata = connection.CreateCommand();
+            cmdPlata.Transaction = transaction;
+            cmdPlata.CommandText = @"
+                INSERT INTO Plati (id_comanda, metoda, status)
+                VALUES ($idComanda, $metoda, 'In asteptare')";
+            cmdPlata.Parameters.AddWithValue("$idComanda", idComanda);
+            cmdPlata.Parameters.AddWithValue("$metoda", request.MetodaPlata);
+            await cmdPlata.ExecuteNonQueryAsync();
+        }
+
+        transaction.Commit();
+        return Results.Ok(new { message = "Comanda creata cu succes!", idComanda });
+    } catch (Exception ex) {
+        transaction.Rollback();
+        return Results.BadRequest(new { error = ex.Message });
+    }
+});
+
+// COMENZI - Lista comenzilor unui utilizator cu detalii
+app.MapGet("/api/comenzi/{userId}", async (int userId) => {
+    var comenzi = new List<object>();
+    using var connection = new SqliteConnection(connectionString);
+    await connection.OpenAsync();
+
+    var cmdComenzi = connection.CreateCommand();
+    cmdComenzi.CommandText = @"
+        SELECT c.id_comanda, c.data_comanda, c.status, c.total,
+               COALESCE(p.metoda, 'Necunoscut') as metoda_plata
+        FROM Comenzi c
+        LEFT JOIN Plati p ON c.id_comanda = p.id_comanda
+        WHERE c.id_user = $userId
+        ORDER BY c.id_comanda DESC";
+    cmdComenzi.Parameters.AddWithValue("$userId", userId);
+
+    using var reader = await cmdComenzi.ExecuteReaderAsync();
+    var listaComenzi = new List<(long id, string data, string status, double total, string metoda)>();
+    while (await reader.ReadAsync()) {
+        listaComenzi.Add((
+            reader.GetInt64(0),
+            reader.GetString(1),
+            reader.GetString(2),
+            reader.GetDouble(3),
+            reader.GetString(4)
+        ));
+    }
+    reader.Close();
+
+    foreach (var comanda in listaComenzi) {
+        var cmdDetalii = connection.CreateCommand();
+        cmdDetalii.CommandText = @"
+            SELECT dc.cantitate, dc.pret_unitar, f.nume, f.imagine
+            FROM Detalii_Comanda dc
+            JOIN Flori f ON dc.id_floare = f.id_floare
+            WHERE dc.id_comanda = $idComanda";
+        cmdDetalii.Parameters.AddWithValue("$idComanda", comanda.id);
+
+        var detalii = new List<object>();
+        using var readerDetalii = await cmdDetalii.ExecuteReaderAsync();
+        while (await readerDetalii.ReadAsync()) {
+            detalii.Add(new {
+                cantitate = readerDetalii.GetInt32(0),
+                pretUnitar = readerDetalii.GetDouble(1),
+                numeFloare = readerDetalii.GetString(2),
+                imagine = readerDetalii.IsDBNull(3) ? "" : readerDetalii.GetString(3)
+            });
+        }
+
+        comenzi.Add(new {
+            idComanda = comanda.id,
+            dataComanda = comanda.data,
+            status = comanda.status,
+            total = comanda.total,
+            metodaPlata = comanda.metoda,
+            detalii
+        });
+    }
+
+    return Results.Ok(comenzi);
+});
+
 app.Run("http://localhost:5000");
 
 public record LoginRequest(string Email, string Parola);
@@ -258,3 +414,6 @@ public record UserUpdateDto(string Nume, string Email, string Parola, string Adr
 public record UserRegistrationRequest(string Nume, string Email, string Parola, string Telefon, string Adresa, string Rol);
 public record FloareRequest(string Nume, double Pret, string Culoare, int Stoc, string? Imagine);
 public record FloareUpdateRequest(double Pret, int Stoc, string? Imagine);
+public record FavoriteRequest(int UserId, int FlowareId);
+public record ComandaRequest(int IdUser, double Total, string MetodaPlata, List<DetaliiProdusRequest> Produse);
+public record DetaliiProdusRequest(int IdFloare, int Cantitate, double PretUnitar);
