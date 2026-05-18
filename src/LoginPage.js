@@ -5,6 +5,7 @@ import './LoginPage.css';
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [parola, setParola] = useState('');
+  const [showParola, setShowParola] = useState(false); 
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -52,12 +53,21 @@ function LoginPage() {
 
           <div className="grup-input">
             <label>Parolă</label>
-            <input 
-              type="password" 
-              value={parola} 
-              onChange={(e) => setParola(e.target.value)} 
-              required 
-            />
+            <div className="input-parola-wrapper">
+              <input 
+                type={showParola ? "text" : "password"}
+                value={parola} 
+                onChange={(e) => setParola(e.target.value)} 
+                required 
+              />
+              <button
+                type="button"
+                className="buton-show-parola"
+                onClick={() => setShowParola(!showParola)}
+              >
+                {showParola ? "Ascunde" : "Arată"}
+              </button>
+            </div>
           </div>
 
           <button type="submit" className="buton-transparent">Conectează-te</button>

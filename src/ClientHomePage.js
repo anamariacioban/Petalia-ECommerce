@@ -14,7 +14,11 @@ function ClientHomePage() {
     const { cartCount } = useCart();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isProfileOpen, setIsProfileOpen] = useState(false);
-    const [userData, setUserData] = useState({ nume: '', email: '', parola: '', adresa: '', telefon: '' }); 
+    const [userData, setUserData] = useState({
+      nume: '', email: '', parola: '', adresa: '', telefon: ''
+    }); 
+    const [showParolaProfil, setShowParolaProfil] = useState(false);
+    const [profileErrors, setProfileErrors] = useState({});
     const idUser = localStorage.getItem('idUser');
     const rol = localStorage.getItem('rol');
     const [numeUtilizator, setNumeUtilizator] = useState("Utilizator");
@@ -37,7 +41,8 @@ function ClientHomePage() {
     localStorage.removeItem('numeUtilizator');
     localStorage.removeItem('idUser');
     localStorage.removeItem('rol');
-    window.location.href = '/login'; 
+    localStorage.removeItem('emailUser');
+    window.location.href = '/'; 
   };
 
   const openProfile = async () => {
@@ -53,6 +58,38 @@ function ClientHomePage() {
   };
 
   const handleSaveProfile = async () => {
+    const newErrors = {};
+    const cuvinte = userData.nume.trim().split(/\s+/);
+    if (!userData.nume.trim()) {
+      newErrors.nume = 'Numele complet este obligatoriu.';
+    } else if (cuvinte.length < 2) {
+      newErrors.nume = 'Introduceți cel puțin prenume și nume (2 cuvinte).';
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(userData.email)) {
+      newErrors.email = 'Emailul nu are un format valid (ex: nume@domeniu.com).';
+    }
+    if (userData.parola && userData.parola.length < 6) {
+      newErrors.parola = 'Parola trebuie să aibă cel puțin 6 caractere.';
+    } else if (userData.parola && !/[A-Z]/.test(userData.parola)) {
+      newErrors.parola = 'Parola trebuie să conțină cel puțin o literă mare.';
+    } else if (userData.parola && !/[0-9]/.test(userData.parola)) {
+      newErrors.parola = 'Parola trebuie să conțină cel puțin o cifră.';
+    }
+    if (userData.telefon) {
+      const telRegex = /^[0-9]{10}$/;
+      if (!telRegex.test(userData.telefon.replace(/\s/g, ''))) {
+        newErrors.telefon = 'Numărul de telefon trebuie să aibă 10 cifre.';
+      }
+    }
+    if (userData.adresa && userData.adresa.trim().length < 10) {
+      newErrors.adresa = 'Adresa este prea scurtă.';
+    }
+    if (Object.keys(newErrors).length > 0) {
+      setProfileErrors(newErrors);
+      return;
+    }
+    setProfileErrors({});
     const response = await fetch(`http://localhost:5000/api/user-update/${idUser}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
@@ -131,11 +168,46 @@ function ClientHomePage() {
           <X color="white" size={30} onClick={() => setIsProfileOpen(false)} style={{cursor:'pointer', marginLeft: 'auto'}} />
         </div>
         <div className="profile-form">
+<<<<<<< HEAD
+          <div className="input-group">
+            <label>Nume <span className="obligatoriu-profil">*</span></label>
+            <input type="text" value={userData.nume} onChange={(e) => { setUserData({...userData, nume: e.target.value}); setProfileErrors({...profileErrors, nume: ''}); }} />
+            {profileErrors.nume && <span className="eroare-profil">{profileErrors.nume}</span>}
+          </div>
+          <div className="input-group">
+            <label>Email <span className="obligatoriu-profil">*</span></label>
+            <input type="text" value={userData.email} onChange={(e) => { setUserData({...userData, email: e.target.value}); setProfileErrors({...profileErrors, email: ''}); }} />
+            {profileErrors.email && <span className="eroare-profil">{profileErrors.email}</span>}
+          </div>
+          <div className="input-group">
+            <label>Parola</label>
+            <p className="cerinte-profil">Minim 6 caractere, o literă mare și o cifră.</p>
+            <div className="input-parola-profil">
+              <input type={showParolaProfil ? "text" : "password"} value={userData.parola} onChange={(e) => { setUserData({...userData, parola: e.target.value}); setProfileErrors({...profileErrors, parola: ''}); }} />
+              <button type="button" className="buton-show-parola-profil" onClick={() => setShowParolaProfil(!showParolaProfil)}>
+                {showParolaProfil ? "Ascunde" : "Arată"}
+              </button>
+            </div>
+            {profileErrors.parola && <span className="eroare-profil">{profileErrors.parola}</span>}
+          </div>
+          <div className="input-group">
+            <label>Adresa <span className="optional-profil">(opțional)</span></label>
+            <input type="text" value={userData.adresa} onChange={(e) => { setUserData({...userData, adresa: e.target.value}); setProfileErrors({...profileErrors, adresa: ''}); }} />
+            {profileErrors.adresa && <span className="eroare-profil">{profileErrors.adresa}</span>}
+          </div>
+          <div className="input-group">
+            <label>Telefon <span className="optional-profil">(opțional)</span></label>
+            <input type="text" value={userData.telefon} onChange={(e) => { setUserData({...userData, telefon: e.target.value}); setProfileErrors({...profileErrors, telefon: ''}); }} />
+            {profileErrors.telefon && <span className="eroare-profil">{profileErrors.telefon}</span>}
+          </div>
+          <p className="legenda-profil"><span className="obligatoriu-profil">*</span> câmpuri obligatorii</p>
+=======
           <div className="input-group"><label>Nume</label><input type="text" value={userData.nume} onChange={(e) => setUserData({...userData, nume: e.target.value})} /></div>
           <div className="input-group"><label>Email</label><input type="email" value={userData.email} onChange={(e) => setUserData({...userData, email: e.target.value})} /></div>
           <div className="input-group"><label>Parola</label><input type="password" value={userData.parola} onChange={(e) => setUserData({...userData, parola: e.target.value})} /></div>
           <div className="input-group"><label>Adresa</label><input type="text" value={userData.adresa} onChange={(e) => setUserData({...userData, adresa: e.target.value})} /></div>
           <div className="input-group"><label>Telefon</label><input type="text" value={userData.telefon} onChange={(e) => setUserData({...userData, telefon: e.target.value})} /></div>
+>>>>>>> origin/develop
           <button className="btn-save" onClick={handleSaveProfile}>Salveaza modificari</button>
         </div>
       </div>
