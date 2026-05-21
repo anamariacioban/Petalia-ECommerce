@@ -8,9 +8,14 @@
 
 .dreptunghi-login {
     background-color: #b6003a;
-    padding: 50px;
+    padding: 60px;
     border-radius: 25px;
-    width: 400px;
+    width: 50%;
+    max-width: 600px;
+    min-width: 250px;
+    align-items: center;
+    margin-top: 7%;
+    margin-bottom: 7%;
     /* Poți ajusta lățimea cum dorești */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
@@ -60,7 +65,7 @@
     align-items: center;
     gap: 8px;
 }
- 
+
 .input-parola-wrapper input {
     flex: 1;
 }
@@ -76,22 +81,24 @@
     font-family: Arial, sans-serif;
     white-space: nowrap;
 }
- 
+
 .buton-show-parola:hover {
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .dreptunghi-login .buton-transparent {
-    width: 200px;
+    width: 300px;
     align-self: center;
     margin-top: 10px;
     font-family: Arial, sans-serif;
 }
 
+
 /* Casuta roz recuperare parola */
+
 .casuta-recuperare-parola {
-    background-color: rgba(255, 255, 255, 0.18);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    background-color: transparent;
+    border: transparent;
     border-radius: 10px;
     padding: 10px 14px;
     text-align: center;
@@ -111,7 +118,9 @@
     opacity: 0.75;
 }
 
+
 /* Popup overlay */
+
 .popup-overlay {
     position: fixed;
     inset: 0;
