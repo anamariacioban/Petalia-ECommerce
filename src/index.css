@@ -6,14 +6,23 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    /* Aici am schimbat fontul */
-    font-family: "Damion", cursive;
-    /*font-weight: 800;
-    font-style: normal;*/
+    font-family: 'Cormorant Garamond', Georgia, serif;
 }
-
-html,
-body,
+ 
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10, 0, 5, 0.62);
+    z-index: 0;
+    pointer-events: none;
+}
+ 
 #root {
+    position: relative;
+    z-index: 1;
+}
+ 
+html, body, #root {
     height: 100%;
 }
