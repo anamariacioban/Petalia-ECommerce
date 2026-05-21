@@ -73,14 +73,21 @@ app.MapGet("/api/favorite/{userId}", async (int userId) => {
     await connection.OpenAsync();
     var command = connection.CreateCommand();
     command.CommandText = @"
-        SELECT f.nume, f.pret, f.culoare 
+        SELECT f.id_floare, f.nume, f.pret, f.culoare, f.stoc, f.imagine
         FROM Flori f
         JOIN Favorite fav ON f.id_floare = fav.id_floare
         WHERE fav.id_user = $userId";
     command.Parameters.AddWithValue("$userId", userId);
     using var reader = await command.ExecuteReaderAsync();
     while (await reader.ReadAsync()) {
-        favorite.Add(new { nume = reader.GetString(0), pret = reader.GetDouble(1), culoare = reader.GetString(2) });
+        favorite.Add(new {
+            id_floare = reader.GetInt32(0),
+            nume = reader.GetString(1),
+            pret = reader.GetDouble(2),
+            culoare = reader.GetString(3),
+            stoc = reader.IsDBNull(4) ? 0 : reader.GetInt32(4),
+            imagine = reader.IsDBNull(5) ? "" : reader.GetString(5)
+        });
     }
     return Results.Ok(favorite);
 });
@@ -407,6 +414,56 @@ app.MapGet("/api/comenzi/{userId}", async (int userId) => {
     return Results.Ok(comenzi);
 });
 
+// Recuperare parola - trimite parola pe email
+app.MapPost("/api/recover-password", async (RecoverPasswordRequest request) =>
+{
+    using var connection = new SqliteConnection(connectionString);
+    await connection.OpenAsync();
+    var command = connection.CreateCommand();
+    command.CommandText = "SELECT parola, nume FROM Utilizatori WHERE email = $email";
+    command.Parameters.AddWithValue("$email", request.Email);
+    using var reader = await command.ExecuteReaderAsync();
+    if (!await reader.ReadAsync())
+    {
+        return Results.Json(new { error = "Nu există niciun cont asociat acestui email." }, statusCode: 404);
+    }
+    var parola = reader.GetString(0);
+    var nume = reader.GetString(1);
+    reader.Close();
+
+    try
+    {
+        // ⚠️ Configurati SMTP in appsettings.json:
+        // "Smtp": { "Host": "smtp.gmail.com", "Port": "587", "User": "emailul-vostru@gmail.com", "Password": "parola-aplicatie-gmail" }
+        var smtpHost = builder.Configuration["Smtp:Host"] ?? "smtp.gmail.com";
+        var smtpPort = int.Parse(builder.Configuration["Smtp:Port"] ?? "587");
+        var smtpUser = builder.Configuration["Smtp:User"] ?? "emailul-vostru@gmail.com";
+        var smtpPass = builder.Configuration["Smtp:Password"] ?? "parola-aplicatie-gmail";
+
+        using var smtpClient = new System.Net.Mail.SmtpClient(smtpHost, smtpPort)
+        {
+            EnableSsl = true,
+            Credentials = new System.Net.NetworkCredential(smtpUser, smtpPass)
+        };
+
+        var mail = new System.Net.Mail.MailMessage
+        {
+            From = new System.Net.Mail.MailAddress(smtpUser, "Petalia Florarie"),
+            Subject = "Recuperare parola - Petalia",
+            Body = $"Buna, {nume}!\n\nParola contului tau este: {parola}\n\nDaca nu ai solicitat aceasta recuperare, te rugam sa ignori acest mesaj.\n\nCu drag,\nEchipa Petalia 🌸",
+            IsBodyHtml = false
+        };
+        mail.To.Add(request.Email);
+
+        await smtpClient.SendMailAsync(mail);
+        return Results.Ok(new { message = "Parola a fost trimisa pe email!" });
+    }
+    catch (Exception ex)
+    {
+        return Results.Json(new { error = $"Eroare la trimiterea emailului: {ex.Message}" }, statusCode: 500);
+    }
+});
+
 app.Run("http://localhost:5000");
 
 public record LoginRequest(string Email, string Parola);
@@ -417,3 +474,4 @@ public record FloareUpdateRequest(double Pret, int Stoc, string? Imagine);
 public record FavoriteRequest(int UserId, int FlowareId);
 public record ComandaRequest(int IdUser, double Total, string MetodaPlata, List<DetaliiProdusRequest> Produse);
 public record DetaliiProdusRequest(int IdFloare, int Cantitate, double PretUnitar);
+public record RecoverPasswordRequest(string Email);

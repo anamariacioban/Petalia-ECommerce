@@ -87,3 +87,71 @@
     margin-top: 10px;
     font-family: Arial, sans-serif;
 }
+
+/* Casuta roz recuperare parola */
+.casuta-recuperare-parola {
+    background-color: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    padding: 10px 14px;
+    text-align: center;
+}
+
+.link-recuperare-parola {
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 0.88rem;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: opacity 0.2s;
+}
+
+.link-recuperare-parola:hover {
+    opacity: 0.75;
+}
+
+/* Popup overlay */
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.popup-box {
+    background: white;
+    border-radius: 18px;
+    padding: 36px 40px;
+    max-width: 360px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.popup-mesaj {
+    color: #b6003a;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    margin: 0 0 24px 0;
+    line-height: 1.5;
+}
+
+.popup-buton-inchide {
+    background-color: #b6003a;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 32px;
+    font-family: Arial, sans-serif;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.popup-buton-inchide:hover {
+    background-color: #8f002d;
+}
