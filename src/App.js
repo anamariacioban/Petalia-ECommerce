@@ -8,6 +8,9 @@ import FavoritesPage from './FavoritesPage';
 import AdminPage from './AdminPage';
 import CategoryPage from './CategoryPage';
 import ProdusInLucru from './ProdusInLucru';
+import ComenziPage from './ComenziPage';
+import PuncteFidelitate from './PuncteFidelitate';
+import { CartProvider } from './CartContext';
 
 function Home() {
   return (
@@ -23,18 +26,22 @@ function Home() {
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signin" element={<SignInPage />} />
-        <Route path="/client-home" element={<ClientHomePage />} />
-        <Route path="/favorites" element={<FavoritesPage />} />
-        <Route path="/admin" element={<AdminPage />} />
-        <Route path="/categorie/:categorie" element={<CategoryPage />} />
-        <Route path="/produs-in-lucru" element={<ProdusInLucru />} />
-      </Routes>
-    </Router>
+    <CartProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signin" element={<SignInPage />} />
+          <Route path="/client-home" element={<ClientHomePage />} />
+          <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/categorie/:categorie" element={<CategoryPage />} />
+          <Route path="/produs-in-lucru" element={<ProdusInLucru />} />
+          <Route path="/comenzi" element={<ComenziPage />} />
+          <Route path="/puncte-fidelitate" element={<PuncteFidelitate />} />
+        </Routes>
+      </Router>
+    </CartProvider>
   );
 }
 

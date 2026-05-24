@@ -32,7 +32,13 @@ function FavoritesPage() {
                 <div className="favorites-scroll-area">
                     {favorite.length > 0 ? (
                         favorite.map((item, index) => (
-                            <div key={index} className="favorite-row">
+                            <div
+                                key={index}
+                                className="favorite-row"
+                                onClick={() => navigate('/produs-in-lucru', { state: { produs: item } })}
+                                style={{ cursor: 'pointer' }}
+                                title="Click pentru detalii"
+                            >
                                 <div className="favorite-info">
                                     <span className="flower-name">{item.nume}</span>
                                     <span className="flower-details">{item.culoare}</span>

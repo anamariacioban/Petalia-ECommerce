@@ -31,6 +31,7 @@
     transform: scale(1.1);
 }
 
+
 /* Bara de căutare centrată */
 
 .container-search {
@@ -69,6 +70,7 @@
 .icon-search {
     color: white;
 }
+
 
 /* Grid-ul de 2x2 */
 
@@ -113,6 +115,7 @@
     font-style: italic;
 }
 
+
 /* Containerul principal */
 
 .pagina-container {
@@ -121,6 +124,7 @@
     min-height: 100vh;
     width: 100%;
 }
+
 
 /* Stilul pentru Sidebar */
 
@@ -144,6 +148,7 @@
     transform: translateX(0);
 }
 
+
 /* Header-ul din Sidebar */
 
 .sidebar-header {
@@ -159,6 +164,7 @@
     font-size: 1.5rem;
     font-style: italic;
 }
+
 
 /* Navigarea din interiorul Sidebar */
 
@@ -186,6 +192,7 @@
     transform: scale(1.15);
     font-weight: bold;
 }
+
 
 /* Stilul pentru conținutul paginii */
 
@@ -272,4 +279,62 @@
 .btn-save:hover {
     background-color: white;
     transform: translateY(-2px);
+}
+
+
+/* Adaugat pentru validari profil */
+
+.eroare-profil {
+    color: #ffcccc;
+    font-size: 0.78rem;
+    margin-top: 3px;
+    display: block;
+}
+
+.cerinte-profil {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.75rem;
+    margin: 2px 0 4px 0;
+}
+
+.obligatoriu-profil {
+    color: #ffcccc;
+    font-weight: bold;
+}
+
+.optional-profil {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.78rem;
+    font-weight: normal;
+}
+
+.legenda-profil {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.78rem;
+    margin: 0;
+}
+
+.input-parola-profil {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.input-parola-profil input {
+    flex: 1;
+}
+
+.buton-show-parola-profil {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    border-radius: 6px;
+    padding: 6px 8px;
+    cursor: pointer;
+    font-size: 0.72rem;
+    white-space: nowrap;
+}
+
+.buton-show-parola-profil:hover {
+    background: rgba(255, 255, 255, 0.2);
 }
