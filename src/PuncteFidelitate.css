@@ -1,0 +1,523 @@
+/* ===== PAGINA GENERALA ===== */
+.pf-pagina {
+  min-height: 100vh;
+  color: white;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== HEADER ===== */
+.pf-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 30px;
+  background: rgba(139, 26, 74, 0.55);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.pf-btn-back {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.95em;
+  transition: background 0.2s;
+}
+.pf-btn-back:hover { background: rgba(255, 255, 255, 0.22); }
+
+.pf-header-titlu {
+  display: flex;
+  align-items: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+/* ===== CONTINUT ===== */
+.pf-continut {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px 20px 60px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ===== CARD PUNCTE ===== */
+.pf-card-puncte {
+  background: linear-gradient(135deg, rgba(139, 26, 74, 0.75), rgba(80, 0, 40, 0.8));
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  border-radius: 24px;
+  padding: 32px;
+  text-align: center;
+  margin-bottom: 28px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 215, 0, 0.2);
+}
+
+.pf-stele-decor {
+  color: rgba(255, 215, 0, 0.6);
+  font-size: 1.1em;
+  letter-spacing: 8px;
+  margin-bottom: 12px;
+}
+
+.pf-puncte-label {
+  font-size: 1.1em;
+  opacity: 0.75;
+  margin-bottom: 6px;
+  font-style: italic;
+}
+
+.pf-puncte-numar {
+  font-size: 4em;
+  font-weight: bold;
+  color: #FFD700;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  line-height: 1.1;
+}
+
+.pf-puncte-loading {
+  font-size: 3em;
+  color: rgba(255, 215, 0, 0.4);
+  line-height: 1.2;
+}
+
+.pf-puncte-sublabel {
+  font-size: 0.95em;
+  opacity: 0.6;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.pf-info-rate {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.pf-info-chip {
+  background: rgba(255, 215, 0, 0.15);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.88em;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.pf-info-exemplu {
+  font-size: 0.82em;
+  opacity: 0.5;
+  font-style: italic;
+  margin-top: 6px;
+}
+
+/* ===== MESAJE ===== */
+.pf-mesaj-succes {
+  display: flex;
+  align-items: center;
+  background: rgba(76, 175, 125, 0.2);
+  border: 1px solid rgba(76, 175, 125, 0.5);
+  border-radius: 14px;
+  padding: 14px 20px;
+  margin-bottom: 20px;
+  color: #a8e6c8;
+  font-size: 1em;
+}
+
+.pf-mesaj-eroare {
+  background: rgba(230, 57, 70, 0.18);
+  border: 1px solid rgba(230, 57, 70, 0.4);
+  border-radius: 14px;
+  padding: 14px 20px;
+  margin-bottom: 20px;
+  color: #ffaaaa;
+  font-size: 0.95em;
+}
+
+/* ===== TABS ===== */
+.pf-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.pf-tab {
+  display: flex;
+  align-items: center;
+  padding: 11px 22px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1em;
+  transition: all 0.2s;
+}
+
+.pf-tab:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+.pf-tab.activ {
+  background: rgba(139, 26, 74, 0.7);
+  border-color: rgba(255, 215, 0, 0.5);
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 4px 16px rgba(139, 26, 74, 0.4);
+}
+
+/* ===== TAB CONTINUT ===== */
+.pf-tab-continut {
+  margin-bottom: 24px;
+}
+
+.pf-descriere {
+  font-style: italic;
+  opacity: 0.75;
+  margin-bottom: 24px;
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+.pf-loading, .pf-gol {
+  text-align: center;
+  padding: 40px;
+  font-style: italic;
+  opacity: 0.6;
+}
+
+/* ===== TIP SELECTIE (CUSTOM) ===== */
+.pf-tip-selectie {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.pf-tip-label {
+  font-size: 1em;
+  opacity: 0.8;
+  font-style: italic;
+}
+
+.pf-tip-btn {
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.95em;
+  transition: all 0.2s;
+}
+
+.pf-tip-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+.pf-tip-btn.activ {
+  background: rgba(139, 26, 74, 0.65);
+  border-color: rgba(255, 215, 0, 0.5);
+  color: white;
+  font-weight: bold;
+}
+
+/* ===== SECTIUNE TITLU ===== */
+.pf-sectiune-titlu {
+  display: flex;
+  align-items: center;
+  font-size: 1.15em;
+  font-style: italic;
+  margin-bottom: 18px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ===== GRID FLORI ===== */
+.pf-grid-flori {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 18px;
+}
+
+/* ===== CARD FLOARE ===== */
+.pf-card-floare {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+}
+
+.pf-card-floare:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.3);
+}
+
+.pf-card-imagine {
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.pf-card-imagine img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pf-imagine-goala {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3em;
+}
+
+.pf-card-body {
+  padding: 12px 12px 6px;
+  flex-grow: 1;
+}
+
+.pf-card-nume {
+  font-size: 1.05em;
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 4px;
+  font-family: Georgia, serif;
+}
+
+.pf-card-categorie {
+  font-size: 0.8em;
+  opacity: 0.55;
+  margin-bottom: 6px;
+}
+
+.pf-card-cost {
+  display: flex;
+  align-items: center;
+  font-size: 1em;
+  font-weight: bold;
+  color: #FFD700;
+  margin-bottom: 3px;
+}
+
+.pf-card-stoc {
+  font-size: 0.78em;
+  opacity: 0.6;
+}
+
+.pf-card-footer {
+  padding: 0 12px 12px;
+}
+
+.pf-btn-adauga {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px;
+  background: white;
+  color: #8B1A4A;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: Georgia, serif;
+  font-size: 0.88em;
+  font-weight: bold;
+  transition: background 0.2s;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.pf-btn-adauga:hover { background: #f5e6ee; }
+
+.pf-btn-adauga.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background: rgba(255, 255, 255, 0.3);
+  color: rgba(139, 26, 74, 0.5);
+}
+
+.pf-cantitate-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pf-btn-qty {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.pf-btn-qty:hover { background: rgba(255, 255, 255, 0.25); }
+
+.pf-qty-val {
+  font-size: 1.1em;
+  font-weight: bold;
+  min-width: 24px;
+  text-align: center;
+}
+
+/* ===== COS CU PUNCTE ===== */
+.pf-cos {
+  background: rgba(139, 26, 74, 0.5);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 20px;
+  padding: 24px;
+  margin-top: 10px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.pf-cos-titlu {
+  font-size: 1.2em;
+  font-style: italic;
+  margin: 0 0 16px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.pf-cos-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.pf-cos-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  padding: 10px 14px;
+}
+
+.pf-cos-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pf-cos-nume {
+  font-size: 0.98em;
+  font-style: italic;
+}
+
+.pf-cos-qty {
+  font-size: 0.85em;
+  opacity: 0.6;
+}
+
+.pf-cos-dreapta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pf-cos-cost {
+  display: flex;
+  align-items: center;
+  font-size: 0.95em;
+  font-weight: bold;
+  color: #FFD700;
+}
+
+.pf-cos-sterge {
+  background: none;
+  border: none;
+  color: rgba(255, 100, 100, 0.7);
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.2s;
+}
+.pf-cos-sterge:hover { color: rgba(255, 80, 80, 1); }
+
+.pf-cos-separator {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  margin: 14px 0;
+}
+
+.pf-cos-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 1em;
+}
+
+.pf-cos-total-val {
+  display: flex;
+  align-items: center;
+  font-size: 1.25em;
+  font-weight: bold;
+  color: #FFD700;
+}
+
+.pf-cos-disponibil {
+  font-size: 0.9em;
+  opacity: 0.7;
+  margin-bottom: 18px;
+  font-style: italic;
+}
+
+.pf-insuficient {
+  color: #ff8080;
+  font-weight: bold;
+}
+
+.pf-btn-confirma {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  color: #5a0020;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: Georgia, serif;
+  font-size: 1.05em;
+  font-weight: bold;
+  transition: all 0.2s;
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+  letter-spacing: 0.5px;
+}
+
+.pf-btn-confirma:hover:not(.disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(255, 215, 0, 0.4);
+}
+
+.pf-btn-confirma.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}

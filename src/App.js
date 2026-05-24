@@ -9,6 +9,7 @@ import AdminPage from './AdminPage';
 import CategoryPage from './CategoryPage';
 import ProdusInLucru from './ProdusInLucru';
 import ComenziPage from './ComenziPage';
+import PuncteFidelitate from './PuncteFidelitate';
 import { CartProvider } from './CartContext';
 
 function Home() {
@@ -37,6 +38,7 @@ function App() {
           <Route path="/categorie/:categorie" element={<CategoryPage />} />
           <Route path="/produs-in-lucru" element={<ProdusInLucru />} />
           <Route path="/comenzi" element={<ComenziPage />} />
+          <Route path="/puncte-fidelitate" element={<PuncteFidelitate />} />
         </Routes>
       </Router>
     </CartProvider>

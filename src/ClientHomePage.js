@@ -152,7 +152,7 @@ function ClientHomePage() {
         <nav className="sidebar-nav">
           <button className="menu-item" onClick={openProfile}>Profil</button>
           <button className="menu-item" onClick={() => navigate('/favorites')}>Preferate</button>
-          <button className="menu-item">Puncte de fidelitate</button>
+          <button className="menu-item" onClick={() => { setIsMenuOpen(false); navigate("/puncte-fidelitate"); }}>Puncte de fidelitate</button>
           <button className="menu-item" onClick={() => { setIsMenuOpen(false); navigate('/comenzi'); }}>Comenzi</button>
           {rol === 'Administrator' && (
             <button className="menu-item" onClick={() => navigate('/admin')}>Administrare</button>

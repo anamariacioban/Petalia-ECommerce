@@ -261,13 +261,18 @@ function ComenziPage() {
                   <div className="comanda-header-row">
                     <div className="comanda-id">
                       <Package size={18} style={{ marginRight: '8px', opacity: 0.8 }} />
-                      Comanda #{comanda.idComanda}
+                      {comanda.titlu ? comanda.titlu : `Comanda #${comanda.idComanda}`}
                     </div>
                     <div className="comanda-status" style={{ color: statusColor(comanda.status) }}>
                       {statusIcon(comanda.status)}
                       <span style={{ marginLeft: '6px' }}>{comanda.status}</span>
                     </div>
                   </div>
+                  {comanda.titlu && (
+                    <div style={{ fontSize: '0.78em', opacity: 0.5, marginBottom: '4px', paddingLeft: '2px' }}>
+                      Comanda #{comanda.idComanda}
+                    </div>
+                  )}
 
                   <div className="comanda-data">
                     🗓 {new Date(comanda.dataComanda).toLocaleDateString('ro-RO', {
