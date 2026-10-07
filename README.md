@@ -14,9 +14,9 @@
 
 Developed as part of the **Industrial Informatics** curriculum at the **Technical University of Cluj-Napoca (UTCN)**:
 
-- **Ana-Maria Cioban** — *Team Leader*[cite: 3]
-- **Alexandra Ștefana Maria Jîrcan** — *Developer*[cite: 3]
-- **Adina Denisa Copcea** — *Tester*[cite: 3]
+- **Ana-Maria Cioban** — *Team Leader*
+- **Alexandra Ștefana Maria Jîrcan** — *Developer*
+- **Adina Denisa Copcea** — *Tester*
 ---
 
 ## 📖 Overview
