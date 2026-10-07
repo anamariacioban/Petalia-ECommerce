@@ -171,31 +171,11 @@ Petalia follows a **3-tier Client-Server architecture**:
 ## 🚀 Getting Started
 
 ### Prerequisites
-- [Node.js](https://nodejs.org/) (v18+) & `npm`
-- [.NET 8.0 or 9.0 SDK](https://dotnet.microsoft.com/download)
+- Node.js (v18+) & npm
+- .NET 8.0 or 9.0 SDK
 
 ### 1. Run the Backend (ASP.NET Core)
 ```bash
 cd PetaliaBackend
 dotnet restore
 dotnet run
-
-
----
-
-## 👥 Team & Roles
-
-Developed as part of the **Industrial Informatics** curriculum at the **Technical University of Cluj-Napoca (UTCN)**[cite: 14]:
-
-- **Ana-Maria Cioban** — *Team Leader*[cite: 3, 14]
-- **Alexandra Ștefana Maria Jîrcan** — *Developer*[cite: 3, 14]
-- **Adina Denisa Copcea** — *Tester*[cite: 3, 14]
-
----
-
-## 📄 Full Documentation
-
-The complete project specification and presentation slides are available directly in the [`docs/`](docs/) directory:
-
-- 📑 [Petalia - Project Documentation (Word / DOCX)](docs/Petalia_Documentation(RomanianVersion).docx)
-- 📊 [Petalia - Presentation Slides (PDF)](docs/Petalia-presentation(RomanianVersion).pdf)
