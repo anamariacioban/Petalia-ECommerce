@@ -142,6 +142,14 @@ Petalia follows a **3-tier Client-Server architecture**:
 
 ---
 
+## 📁 Repository Structure
+
+<p align="center">
+  <img src="docs/diagrams/07-project-structure.png" alt="Project File Structure" width="70%" />
+</p>
+
+---
+
 ## 🛠️ Tech Stack
 
 - **Frontend:**
