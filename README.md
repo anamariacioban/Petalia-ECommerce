@@ -7,6 +7,16 @@
 
 > A full-stack web application for an online flower boutique featuring categorized catalogs, custom bouquet builders, a customer loyalty rewards program, and a role-based admin management dashboard.
 
+
+---
+
+## 👥 Team & Roles
+
+Developed as part of the **Industrial Informatics** curriculum at the **Technical University of Cluj-Napoca (UTCN)**:
+
+- **Ana-Maria Cioban** — *Team Leader*[cite: 3]
+- **Alexandra Ștefana Maria Jîrcan** — *Developer*[cite: 3]
+- **Adina Denisa Copcea** — *Tester*[cite: 3]
 ---
 
 ## 📖 Overview
