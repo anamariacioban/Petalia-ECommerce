@@ -37,7 +37,7 @@ The platform offers an end-to-end e-commerce experience: customers can explore c
 
 | Product Selection & Options | Custom Bouquet Builder | Favorites / Wishlist |
 | :---: | :---: | :---: |
-| ![Product Options](docs/ui/07-product-modal.png) | ![Create Bouquet](docs/ui/13-create-bouquet.png) | ![Favorites](docs/ui/11-favorites.png) |
+| ![Product Options](docs/ui/07-product-modal.png) | ![Create Bouquet](docs/ui/13-create-bouquet.png) | ![Favorites](docs/ui/11-favorite.png) |
 
 ---
 
@@ -85,7 +85,7 @@ Petalia follows a **3-tier Client-Server architecture**:
 - **Data Access & Persistence Layer:** SQLite database (`florarie.db`) managed via `Microsoft.Data.Sqlite` using raw SQL queries and atomic transactions.
 
 <p align="center">
-  <img src="docs/diagrams/04-architecture-diagram.png" alt="Architecture Diagram" width="85%" />
+  <img src="docs/diagrams/architecture-diagram.png" alt="Architecture Diagram" width="85%" />
 </p>
 
 ---
@@ -96,7 +96,7 @@ Petalia follows a **3-tier Client-Server architecture**:
   <summary><b>🔍 Click to view UML Class Diagram</b></summary>
   <br>
   <p align="center">
-    <img src="docs/diagrams/01-class-diagram.png" alt="UML Class Diagram" width="85%" />
+    <img src="docs/diagrams/class-diagram.png" alt="UML Class Diagram" width="85%" />
   </p>
 </details>
 
@@ -104,7 +104,7 @@ Petalia follows a **3-tier Client-Server architecture**:
   <summary><b>🔍 Click to view Use-Case Diagram</b></summary>
   <br>
   <p align="center">
-    <img src="docs/diagrams/02-usecase-diagram.png" alt="Use-Case Diagram" width="85%" />
+    <img src="docs/diagrams/usecase-diagram.png" alt="Use-Case Diagram" width="85%" />
   </p>
 </details>
 
@@ -112,7 +112,7 @@ Petalia follows a **3-tier Client-Server architecture**:
   <summary><b>🔍 Click to view Database Schema (ERD)</b></summary>
   <br>
   <p align="center">
-    <img src="docs/diagrams/03-database-diagram.png" alt="Database Diagram" width="85%" />
+    <img src="docs/diagrams/database-diagram.png" alt="Database Diagram" width="85%" />
   </p>
 </details>
 
@@ -120,7 +120,7 @@ Petalia follows a **3-tier Client-Server architecture**:
   <summary><b>🔍 Click to view Order Placement Sequence Diagram</b></summary>
   <br>
   <p align="center">
-    <img src="docs/diagrams/05-sequence-diagram.png" alt="Sequence Diagram" width="85%" />
+    <img src="docs/diagrams/sequence-diagram.png" alt="Sequence Diagram" width="85%" />
   </p>
 </details>
 
@@ -128,7 +128,7 @@ Petalia follows a **3-tier Client-Server architecture**:
   <summary><b>🔍 Click to view User Navigation Flowchart</b></summary>
   <br>
   <p align="center">
-    <img src="docs/diagrams/06-user-flow.png" alt="User Flow" width="85%" />
+    <img src="docs/diagrams/user-flow.png" alt="User Flow" width="85%" />
   </p>
 </details>
 
@@ -136,7 +136,7 @@ Petalia follows a **3-tier Client-Server architecture**:
   <summary><b>🔍 Click to view Project Structure Tree</b></summary>
   <br>
   <p align="center">
-    <img src="docs/diagrams/07-project-structure.png" alt="Project Structure" width="70%" />
+    <img src="docs/diagrams/project-structure.png" alt="Project Structure" width="70%" />
   </p>
 </details>
 
@@ -145,7 +145,7 @@ Petalia follows a **3-tier Client-Server architecture**:
 ## 📁 Repository Structure
 
 <p align="center">
-  <img src="docs/diagrams/07-project-structure.png" alt="Project File Structure" width="70%" />
+  <img src="docs/diagrams/project-structure.png" alt="Project File Structure" width="70%" />
 </p>
 
 ---
