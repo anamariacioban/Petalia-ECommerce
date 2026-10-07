@@ -1,70 +1,173 @@
-# Getting Started with Create React App
+# 🌸 Petalia — Online Floral E-Commerce Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![React](https://img.shields.io/badge/React-19-61dafb.svg?logo=react&logoColor=black)](https://react.js.org/)
+[![ASP.NET Core](https://img.shields.io/badge/ASP.NET_Core-Minimal_API-512bd4.svg?logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
+[![SQLite](https://img.shields.io/badge/SQLite-florarie.db-003B57.svg?logo=sqlite&logoColor=white)](https://www.sqlite.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Available Scripts
+> A full-stack web application for an online flower boutique featuring categorized catalogs, custom bouquet builders, a customer loyalty rewards program, and a role-based admin management dashboard.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 📖 Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Petalia** was designed to overcome the limitations of traditional flower shop management (manual stock tracking, phone orders, absence of a centralized catalog, lack of customer retention systems). 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The platform offers an end-to-end e-commerce experience: customers can explore categories, configure personalized floral arrangements, track order statuses, and earn/spend loyalty points, while administrators retain full control over product inventories and user permissions.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📸 User Interface Preview
 
-### `npm run build`
+### 🔐 1. Authentication & Onboarding
+| Landing Page | Login | Forgot Password |
+| :---: | :---: | :---: |
+| ![Landing Page](docs/ui/01-landing-page.png) | ![Login](docs/ui/02-login.png) | ![Forgot Password](docs/ui/03-forgot-password.png) |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+| Register / Sign In | User Profile & Sidebar |
+| :---: | :---: |
+| ![Register](docs/ui/04-register.png) | ![User Profile](docs/ui/10-user-profile.png) |
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 🛍️ 2. Catalog & Custom Florals
+| Main Categories | Flowers Category | Bouquets Category |
+| :---: | :---: | :---: |
+| ![Categories](docs/ui/05-home-categories.png) | ![Flowers](docs/ui/06-catalog-flowers.png) | ![Bouquets](docs/ui/08-catalog-bouquets.png) |
 
-### `npm run eject`
+| Product Selection & Options | Custom Bouquet Builder | Favorites / Wishlist |
+| :---: | :---: | :---: |
+| ![Product Options](docs/ui/07-product-modal.png) | ![Create Bouquet](docs/ui/13-create-bouquet.png) | ![Favorites](docs/ui/11-favorites.png) |
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 💳 3. Cart, Checkout & Loyalty Program
+| Cart Overview | Card Payment (Front) | Card Payment (CVV) |
+| :---: | :---: | :---: |
+| ![Cart](docs/ui/15-cart.png) | ![Card Front](docs/ui/16-checkout-card-front.png) | ![Card Back](docs/ui/17-checkout-card-back.png) |
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+| Loyalty Points Balance | Redeem Points for Orders | Order History |
+| :---: | :---: | :---: |
+| ![Loyalty Overview](docs/ui/12-loyalty-points-overview.png) | ![Loyalty Redeem](docs/ui/14-loyalty-points-redeem.png) | ![Order History](docs/ui/18-order-history.png) |
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+### 🛡️ 4. Administrative Control Panel
+| Inventory & Stock Management | User Roles Management | Order Status & Processing |
+| :---: | :---: | :---: |
+| ![Admin Inventory](docs/ui/19-admin-inventory.png) | ![Admin Users](docs/ui/20-admin-users.png) | ![Admin Orders](docs/ui/21-admin-orders.png) |
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## ✨ Key Features
 
-### Code Splitting
+### 👤 Customer Features
+- **Authentication & User Profile:** Account registration, login, profile editing, and password recovery via SMTP email.
+- **Categorized Catalog:** Filtered browsing across 4 collections: *Flowers*, *Bouquets*, *Floral Arrangements*, and *Potted Plants*.
+- **Custom Arrangement Builder:** Step-by-step interactive builder to create personalized bouquets and floral arrangements.
+- **Shopping Cart & Checkout:** In-memory cart with live quantity adjustment, checkout validation, and automated stock decrements upon purchase.
+- **Loyalty Points System:** Earn loyalty points on every standard order (`Points = floor(Total / 20)`). Redeemable on future orders at 1 Point = 1 RON.
+- **Wishlist / Favorites:** Quick bookmarking of favorite floral products.
+- **Order History:** Complete audit trail of past orders with individual item breakdown and delivery tracking.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 🛡️ Administrator Features
+- **Inventory & Stock Management:** Full CRUD operations on products and categories (name, description, price, stock, image upload).
+- **Order Management:** View all placed orders with user and shipping details; update order statuses (`In procesare`, `Confirmata`, `In livrare`, `Finalizata`, `Anulata`).
+- **User Role Management:** List registered users and promote/revoke `Administrator` privileges.
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🏗️ System Architecture & Design
 
-### Making a Progressive Web App
+Petalia follows a **3-tier Client-Server architecture**:
+- **Presentation Layer:** React.js Single Page Application (Port: `localhost:3000`).
+- **Application & Business Logic Layer:** ASP.NET Core Minimal API with RESTful endpoints (Port: `localhost:5000`).
+- **Data Access & Persistence Layer:** SQLite database (`florarie.db`) managed via `Microsoft.Data.Sqlite` using raw SQL queries and atomic transactions.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<p align="center">
+  <img src="docs/diagrams/04-architecture-diagram.png" alt="Architecture Diagram" width="85%" />
+</p>
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### 📐 Diagrams & System Models
 
-### Deployment
+<details>
+  <summary><b>🔍 Click to view UML Class Diagram</b></summary>
+  <br>
+  <p align="center">
+    <img src="docs/diagrams/01-class-diagram.png" alt="UML Class Diagram" width="85%" />
+  </p>
+</details>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<details>
+  <summary><b>🔍 Click to view Use-Case Diagram</b></summary>
+  <br>
+  <p align="center">
+    <img src="docs/diagrams/02-usecase-diagram.png" alt="Use-Case Diagram" width="85%" />
+  </p>
+</details>
 
-### `npm run build` fails to minify
+<details>
+  <summary><b>🔍 Click to view Database Schema (ERD)</b></summary>
+  <br>
+  <p align="center">
+    <img src="docs/diagrams/03-database-diagram.png" alt="Database Diagram" width="85%" />
+  </p>
+</details>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<details>
+  <summary><b>🔍 Click to view Order Placement Sequence Diagram</b></summary>
+  <br>
+  <p align="center">
+    <img src="docs/diagrams/05-sequence-diagram.png" alt="Sequence Diagram" width="85%" />
+  </p>
+</details>
+
+<details>
+  <summary><b>🔍 Click to view User Navigation Flowchart</b></summary>
+  <br>
+  <p align="center">
+    <img src="docs/diagrams/06-user-flow.png" alt="User Flow" width="85%" />
+  </p>
+</details>
+
+<details>
+  <summary><b>🔍 Click to view Project Structure Tree</b></summary>
+  <br>
+  <p align="center">
+    <img src="docs/diagrams/07-project-structure.png" alt="Project Structure" width="70%" />
+  </p>
+</details>
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:**
+  - React.js 19 (SPA)
+  - React Router DOM 7
+  - Lucide React (Icons)
+  - Custom CSS
+- **Backend:**
+  - ASP.NET Core Minimal API (C# / .NET 8–9)
+  - Raw SQL queries via `Microsoft.Data.Sqlite`
+  - Transaction-based state consistency & automated migrations
+- **Database:**
+  - SQLite (`florarie.db`)
+- **Session Management:**
+  - `localStorage` browser session handling
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v18+) & `npm`
+- [.NET 8.0 or 9.0 SDK](https://dotnet.microsoft.com/download)
+
+### 1. Run the Backend (ASP.NET Core)
+```bash
+cd PetaliaBackend
+dotnet restore
+dotnet run
